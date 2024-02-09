@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sfTreeView="clr-namespace:Syncfusion.Maui.TreeView;assembly=Syncfusion.Maui.TreeView"
+             xmlns:local="clr-namespace:LoadonDemand.ViewModels"
+             x:Class="LoadonDemand.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:ViewModel x:Name="viewModel"/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <sfTreeView:SfTreeView x:Name="treeView"
+                               LoadOnDemandCommand="{Binding TreeViewOnDemandCommand}"
+                               ItemsSource="{Binding Menu}"
+                               ExpandActionTarget="Node"
+                               FullRowSelect="True">
+            <sfTreeView:SfTreeView.ItemTemplate>
+                <DataTemplate>
+
+                    <Grid x:Name="grid" RowSpacing="0" BackgroundColor="Transparent">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1" />
+                        </Grid.RowDefinitions>
+                        <Grid RowSpacing="0" Grid.Row="0">
+                            <Grid Grid.Column="0"
+                    RowSpacing="1"
+                    Padding="1,0,0,0"
+                    VerticalOptions="Center">
+                                <Label LineBreakMode="NoWrap"
+                     Text="{Binding ItemName}"
+                     VerticalTextAlignment="Center" />
+                            </Grid>
+                        </Grid>
+                        <StackLayout Grid.Row="1" HeightRequest="1"/>
+                    </Grid>
+
+                </DataTemplate>
+            </sfTreeView:SfTreeView.ItemTemplate>
+        </sfTreeView:SfTreeView>
+    </ContentPage.Content>
+</ContentPage>
